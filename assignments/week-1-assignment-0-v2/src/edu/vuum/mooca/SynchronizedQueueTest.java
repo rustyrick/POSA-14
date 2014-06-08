@@ -28,7 +28,7 @@ public class SynchronizedQueueTest {
      */
     static SynchronizedQueueResult runQueueTest(String qName,
                                                 QueueAdapter<Integer> queue) {
-    	if (SynchronizedQueue.diagnosticsEnabled) {	    
+    	//if (SynchronizedQueue.diagnosticsEnabled) {	    
             System.out.println("Starting " 
                                + qName 
                                + " test...");
@@ -36,7 +36,7 @@ public class SynchronizedQueueTest {
                 System.out.println("An exception may be thrown since "
                                    + qName
                                    + " is intentially BUGGY.");
-    	}		
+    	//}		
 
     	/**
          * We have to instantiate this object because Java doesn't
