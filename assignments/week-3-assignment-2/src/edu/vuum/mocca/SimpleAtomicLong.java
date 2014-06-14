@@ -24,12 +24,14 @@ class SimpleAtomicLong
      * The ReentrantReadWriteLock used to serialize access to mValue.
      */
     // TODO - add the implementation
+    private final ReentrantReadWriteLock mRWLock = new ReentrantReadWriteLock();
 
     /**
      * Creates a new SimpleAtomicLong with the given initial value.
      */
     public SimpleAtomicLong(long initialValue) {
         // TODO - you fill in here
+    	mValue = initialValue;
     }
 
     /**
@@ -39,6 +41,12 @@ class SimpleAtomicLong
      */
     public long get() {
         // TODO - you fill in here
+    	long value;
+    	mRWLock.readLock().lock();
+        value = mValue;
+        mRWLock.readLock().unlock();
+
+        return value;
     }
 
     /**
@@ -48,6 +56,12 @@ class SimpleAtomicLong
      */
     public long decrementAndGet() {
         // TODO - you fill in here
+    	long value = 0;
+        mRWLock.writeLock().lock();
+        value = --mValue;
+        mRWLock.writeLock().unlock();
+        
+        return value;
     }
 
     /**
@@ -57,6 +71,12 @@ class SimpleAtomicLong
      */
     public long getAndIncrement() {
         // TODO - you fill in here
+    	long value = 0;
+        mRWLock.writeLock().lock();
+        value = mValue++;
+        mRWLock.writeLock().unlock();
+        
+        return value;
     }
 
     /**
@@ -66,6 +86,12 @@ class SimpleAtomicLong
      */
     public long getAndDecrement() {
         // TODO - you fill in here
+    	long value = 0;
+        mRWLock.writeLock().lock();
+        value = mValue--;
+        mRWLock.writeLock().unlock();
+
+        return value;
     }
 
     /**
@@ -75,6 +101,12 @@ class SimpleAtomicLong
      */
     public long incrementAndGet() {
         // TODO - you fill in here
+    	long value = 0;
+        mRWLock.writeLock().lock();
+        value = ++mValue;
+        mRWLock.writeLock().unlock();
+
+        return value;
     }
 }
 
