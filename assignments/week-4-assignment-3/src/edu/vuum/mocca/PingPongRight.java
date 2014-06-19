@@ -71,7 +71,6 @@ public class PingPongRight {
         	mSem1 = semaphoreOne;
         	mSem2 = semaphoreTwo;
         	mMaxLoopIterations = maxIterations;
-        	mLatch = new CountDownLatch(2);
         }
 
         /**
@@ -123,7 +122,7 @@ public class PingPongRight {
 
         // TODO initialize this by replacing null with the appropriate
         // constructor call.
-        mLatch = new CountDownLatch(maxIterations);
+        mLatch = new CountDownLatch(2);
 
         // Create the ping and pong SimpleSemaphores that control
         // alternation between threads.
